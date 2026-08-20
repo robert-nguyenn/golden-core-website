@@ -1,0 +1,1 @@
+export function ProductVisual({ kind }: { kind: "pallet" | "crate" | "bin" }) { return <div className={`product-visual ${kind}`}><div className="pv-top"/><div className="pv-front"/><div className="pv-side"/><div className="pv-slot s1"/><div className="pv-slot s2"/><div className="pv-slot s3"/></div>; }

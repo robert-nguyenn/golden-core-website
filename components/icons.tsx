@@ -1,0 +1,12 @@
+type IconProps = { size?: number; strokeWidth?: number };
+const Icon = ({ children, size = 20, strokeWidth = 1.8 }: IconProps & { children: React.ReactNode }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{children}</svg>;
+export const ArrowUpRight = (p: IconProps) => <Icon {...p}><path d="M7 17 17 7M7 7h10v10" /></Icon>;
+export const ChevronRight = (p: IconProps) => <Icon {...p}><path d="m9 18 6-6-6-6" /></Icon>;
+export const Menu = (p: IconProps) => <Icon {...p}><path d="M4 7h16M4 12h16M4 17h16" /></Icon>;
+export const X = (p: IconProps) => <Icon {...p}><path d="M18 6 6 18M6 6l12 12" /></Icon>;
+export const Phone = (p: IconProps) => <Icon {...p}><path d="M22 16.9v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.2 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.64a2 2 0 0 1-.45 2.11L8 9.75a16 16 0 0 0 6 6l1.28-1.28a2 2 0 0 1 2.11-.45c.86.29 1.74.5 2.64.62A2 2 0 0 1 22 16.9Z" /></Icon>;
+export const Package = (p: IconProps) => <Icon {...p}><path d="m21 8-9 5-9-5m18 0-9-5-9 5m18 0v8l-9 5-9-5V8m9 5v8" /></Icon>;
+export const ShieldCheck = (p: IconProps) => <Icon {...p}><path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3v8Z" /><path d="m9 12 2 2 4-4" /></Icon>;
+export const Check = (p: IconProps) => <Icon {...p}><path d="m5 12 4 4L19 6" /></Icon>;
+export const Sparkles = (p: IconProps) => <Icon {...p}><path d="m12 3-1.5 5.5L5 10l5.5 1.5L12 17l1.5-5.5L19 10l-5.5-1.5L12 3ZM5 17l-.7 2.3L2 20l2.3.7L5 23l.7-2.3L8 20l-2.3-.7L5 17Z" /></Icon>;
+export const Search = (p: IconProps) => <Icon {...p}><circle cx="11" cy="11" r="6" /><path d="m20 20-4.35-4.35" /></Icon>;
