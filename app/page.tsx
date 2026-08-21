@@ -23,7 +23,7 @@ export default function Home() {
         <div className="hero-art enter delay-1" aria-label="Minh hoạ pallet Golden Core">
           <div className="hero-orbit orbit-one"/><div className="hero-orbit orbit-two"/>
           <div className="pallet-stack"><ProductVisual kind="pallet" /><ProductVisual kind="pallet" /><ProductVisual kind="pallet" /></div>
-          <div className="measure measure-x">1200 MM</div><div className="measure measure-y">TẢI TRỌNG 3.0 T</div>
+          <div className="measure measure-x">1200 MM</div><div className="measure measure-y">TẢI TRỌNG 3.0T</div>
           <div className="hero-tag"><Sparkles /> Sẵn sàng cho vận hành</div>
         </div>
       </div>
