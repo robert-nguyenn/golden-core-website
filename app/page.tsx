@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight, Check, ChevronRight, Package, ShieldCheck, Sparkles } from "@/components/icons";
+import { CatalogueImage } from "@/components/catalogue-image";
 import { ProductVisual } from "@/components/product-visual";
 import { featuredProducts } from "@/lib/products";
 
@@ -36,7 +37,7 @@ export default function Home() {
 
     <section className="products-preview section-grid"><div className="wrap section-pad">
       <div className="section-head"><div><p className="eyebrow"><span /> DANH MỤC NỔI BẬT</p><h2>Chọn đúng từ<br />nền tảng.</h2></div><Link className="button outline" href="/san-pham">Xem tất cả <ArrowUpRight /></Link></div>
-      <div className="product-grid">{featuredProducts.map((product, i) => <Link className={`product-card card-${i}`} href={`/san-pham/${product.slug}`} key={product.code}><div className="card-visual"><ProductVisual kind={product.kind} /></div><p className="code">{product.code}</p><h3>{product.name}</h3><div className="card-foot"><span>{product.dimension}</span><ArrowUpRight /></div></Link>)}</div>
+      <div className="product-grid">{featuredProducts.map((product, i) => <Link className={`product-card card-${i}`} href={`/san-pham/${product.slug}`} key={product.code}><div className="card-visual"><CatalogueImage product={product} /></div><p className="code">{product.code}</p><h3>{product.name}</h3><div className="card-foot"><span>{product.dimension}</span><ArrowUpRight /></div></Link>)}</div>
     </div></section>
 
     <section className="solutions wrap section-pad"><div className="section-head"><div><p className="eyebrow"><span /> ỨNG DỤNG</p><h2>Đi cùng nhịp<br />vận hành của bạn.</h2></div><p className="muted">Từ một góc kho nhỏ đến chuỗi vận hành rộng lớn, Golden Core giúp xác định giải pháp phù hợp với điều kiện thực tế.</p></div><div className="solution-list">{solutions.map(([num, title, text]) => <article key={num}><p className="solution-number">{num}</p><h3>{title}</h3><p>{text}</p><ArrowUpRight /></article>)}</div></section>
