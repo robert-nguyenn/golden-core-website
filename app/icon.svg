@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Golden Core</title>
+  <circle cx="32" cy="32" r="30" fill="#0d2135"/>
+  <g fill="#efab18" stroke="#0d2135" stroke-linejoin="round" stroke-width="1.8">
+    <path d="M15 15 45 7 50 14 20 22Z"/>
+    <path d="M15 29 45 21 50 28 20 36Z"/>
+    <path d="M15 43 45 35 50 42 20 50Z"/>
+  </g>
+</svg>
