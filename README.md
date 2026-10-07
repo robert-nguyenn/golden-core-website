@@ -1,5 +1,11 @@
 # Golden Core Website
 
+## Hiển thị Google và chuẩn bị quảng cáo
+
+Website có tiêu đề/mô tả riêng cho từng trang, canonical URL, metadata ảnh sản phẩm, structured data và sitemap ảnh. Biểu mẫu báo giá kiểm tra kết quả dịch vụ trước khi thông báo thành công.
+
+Xem [việc cần làm trong Search Console, kiểm tra nhận email và thiết lập đo lường quảng cáo](docs/search-and-ads.md). Google tự quyết định ảnh và tiêu đề hiển thị; website không bảo đảm một mẫu kết quả tìm kiếm cụ thể.
+
 Website catalogue tiếng Việt cho Công ty TNHH Golden Core, xây bằng Next.js và TypeScript. Dự án phù hợp triển khai trên Vercel hoặc bất kỳ dịch vụ hosting Node.js nào.
 
 ## Chạy trên máy

@@ -1,8 +1,14 @@
-"use client";
-import Link from "next/link";
-import { useMemo, useState } from "react";
-import { ArrowUpRight, Search } from "@/components/icons";
-import { CatalogueImage } from "@/components/catalogue-image";
+import ProductCatalogue from "@/components/product-catalogue";
 import { products } from "@/lib/products";
-const categories = ["Tất cả", "Pallet nhựa", "Sóng nhựa", "Thùng rác", "Phụ kiện pallet"];
-export default function ProductsPage() { const [query, setQuery] = useState(""); const [category, setCategory] = useState("Tất cả"); const filtered = useMemo(() => products.filter(p => (category === "Tất cả" || p.category === category) && `${p.name} ${p.code} ${p.dimension}`.toLocaleLowerCase("vi").includes(query.toLocaleLowerCase("vi"))), [query, category]); return <main><section className="page-hero wrap"><p className="eyebrow"><span /> DANH MỤC SẢN PHẨM</p><h1>Chọn một nền tảng<br /><span className="headline-accent">đúng với công việc.</span></h1><p>Tìm sản phẩm theo thông số, ứng dụng hoặc nhận tư vấn trực tiếp từ Golden Core.</p></section><section className="catalogue wrap"><div className="catalogue-tools"><div className="search-box"><Search size={19}/><input value={query} onChange={e => setQuery(e.target.value)} placeholder="Tìm theo mã, tên hoặc kích thước" /></div><div className="filter-row">{categories.map(c => <button key={c} onClick={() => setCategory(c)} className={c === category ? "selected" : ""}>{c}</button>)}</div></div><p className="result-count">{filtered.length} sản phẩm phù hợp</p><div className="catalogue-grid">{filtered.map(p => <Link href={`/san-pham/${p.slug}`} className="catalogue-card" key={p.code}><div className="catalogue-visual"><CatalogueImage product={p}/><span>{p.category}</span></div><p className="code">{p.code}</p><h2>{p.name}</h2><p className="card-dim">{p.dimension}</p><div><span>Xem thông số</span><ArrowUpRight/></div></Link>)}</div>{!filtered.length && <div className="empty-state">Không tìm thấy sản phẩm phù hợp. <Link href="/bao-gia">Gửi nhu cầu cho chúng tôi</Link>.</div>}</section></main>; }
+import { StructuredData } from "@/components/structured-data";
+import { catalogueSchema, pageMetadata, productImages, webPageSchema } from "@/lib/seo";
+
+export const revalidate = 60;
+
+export async function generateMetadata() {
+  return pageMetadata({ title: "Pallet nhựa, sóng nhựa & thùng nhựa – Danh mục", description: "Xem danh mục pallet nhựa, sóng nhựa và thùng nhựa Golden Core. Hình ảnh, kích thước, vật liệu, tải trọng từng mẫu và tư vấn báo giá theo nhu cầu.", path: "/san-pham", images: productImages(products.slice(0, 3)) });
+}
+
+export default async function ProductsPage() {
+  return <><StructuredData data={[webPageSchema("/san-pham", "Danh mục sản phẩm Golden Core", productImages(products.slice(0, 1))), catalogueSchema(products)]} /><ProductCatalogue products={products} /></>;
+}

@@ -5,6 +5,7 @@ export type Article = {
   excerpt: string;
   readingTime: string;
   publishedAt: string;
+  image?: string;
   sections: { heading: string; paragraphs: string[] }[];
 };
 

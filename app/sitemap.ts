@@ -1,11 +1,11 @@
 import type { MetadataRoute } from "next";
-import { articles } from "@/lib/articles";
 import { products } from "@/lib/products";
+import { articles } from "@/lib/articles";
+import { absoluteUrl, productImages } from "@/lib/seo";
 
-const siteUrl = "https://www.goldencorepallet.com";
+export const revalidate = 60;
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const updatedAt = new Date();
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pages = [
     { path: "", changeFrequency: "weekly" as const, priority: 1 },
     { path: "/san-pham", changeFrequency: "weekly" as const, priority: 0.9 },
@@ -18,20 +18,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     ...pages.map(({ path, changeFrequency, priority }) => ({
-      url: `${siteUrl}${path}`,
-      lastModified: updatedAt,
+      url: absoluteUrl(path || "/"),
+      ...(["", "/san-pham"].includes(path) ? { images: productImages(products.slice(0, path === "" ? 3 : undefined)) } : {}),
       changeFrequency,
       priority,
     })),
     ...products.map((product) => ({
-      url: `${siteUrl}/san-pham/${product.slug}`,
-      lastModified: updatedAt,
+      url: absoluteUrl(`/san-pham/${product.slug}`),
+      images: productImages([product]),
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
     ...articles.map((article) => ({
-      url: `${siteUrl}/tin-tuc/${article.slug}`,
-      lastModified: updatedAt,
+      url: absoluteUrl(`/tin-tuc/${article.slug}`),
+      ...(article.image ? { images: [absoluteUrl(article.image)] } : {}),
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),

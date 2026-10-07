@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { ArrowUpRight, Check, ChevronRight, Package, ShieldCheck, Sparkles } from "@/components/icons";
 import { CatalogueImage } from "@/components/catalogue-image";
-import { ProductVisual } from "@/components/product-visual";
-import { featuredProducts } from "@/lib/products";
+import { products } from "@/lib/products";
+import { StructuredData } from "@/components/structured-data";
+import { homeDescription, homeTitle, pageMetadata, productImages, webPageSchema } from "@/lib/seo";
 
 const solutions = [
   ["01", "Kho vận & phân phối", "Pallet đồng nhất, bền bỉ và dễ đưa vào quy trình vận hành hiện hữu."],
@@ -10,22 +11,31 @@ const solutions = [
   ["03", "Thực phẩm & đồ uống", "Giải pháp dễ vệ sinh, bền ẩm và phù hợp môi trường vận hành cường độ cao."],
 ];
 
-export default function Home() {
+export const revalidate = 60;
+
+export async function generateMetadata() {
+  return pageMetadata({ title: homeTitle, description: homeDescription, path: "/", images: productImages(products.filter((product) => product.kind === "pallet").slice(0, 3)) });
+}
+
+export default async function Home() {
+  const featuredProducts = products.slice(0, 3);
+  const heroProduct = products.find((product) => product.kind === "pallet" && product.image);
   return <main>
+    <StructuredData data={webPageSchema("/", homeTitle, heroProduct ? productImages([heroProduct]) : [])} />
     <section className="hero section-grid">
       <div className="wrap hero-grid">
         <div className="hero-copy enter">
           <p className="eyebrow"><span /> GIẢI PHÁP NHỰA CÔNG NGHIỆP</p>
-          <h1>Một nền tảng vững.<br /><span className="headline-accent">Vạn hành trình xa.</span></h1>
-          <p className="hero-lede">Golden Core đồng hành cùng doanh nghiệp bằng những giải pháp pallet, sóng nhựa và lưu kho được chọn đúng cho từng công việc.</p>
-          <div className="hero-actions"><Link className="button gold" href="/san-pham">Khám phá sản phẩm <ArrowUpRight /></Link><Link className="text-link" href="/bao-gia">Nhận tư vấn nhanh <ChevronRight /></Link></div>
+          <h1>Pallet nhựa & sóng nhựa<br /><span className="headline-accent">cho doanh nghiệp.</span></h1>
+          <p className="hero-lede">Chọn pallet nhựa, sóng nhựa và thùng nhựa theo kích thước, tải trọng và môi trường sử dụng. Xem ảnh sản phẩm, so sánh thông số và nhận báo giá từ Golden Core.</p>
+          <div className="hero-actions"><Link className="button gold" href="/bao-gia">Nhận tư vấn & báo giá <ArrowUpRight /></Link><Link className="text-link" href="/san-pham">Xem sản phẩm <ChevronRight /></Link></div>
         </div>
-        <div className="hero-art enter delay-1" aria-label="Minh hoạ pallet Golden Core">
+        {heroProduct && <div className="hero-art enter delay-1">
           <div className="hero-orbit orbit-one"/><div className="hero-orbit orbit-two"/>
-          <div className="pallet-stack"><ProductVisual kind="pallet" /><ProductVisual kind="pallet" /><ProductVisual kind="pallet" /></div>
-          <div className="measure measure-x">1200 MM</div><div className="measure measure-y">TẢI TRỌNG 3.0T</div>
+          <Link className="hero-product" href={`/san-pham/${heroProduct.slug}`}><CatalogueImage product={heroProduct} priority /></Link>
+          <div className="measure measure-x">{heroProduct.code}</div><div className="measure measure-y">TẢI TĨNH {heroProduct.static}</div>
           <div className="hero-tag"><Sparkles /> Sẵn sàng cho vận hành</div>
-        </div>
+        </div>}
       </div>
       <div className="wrap trust-strip"><p>ĐƯỢC THIẾT KẾ CHO</p><span>Kho bãi</span><span>Sản xuất</span><span>Xuất khẩu</span><span>Bán lẻ</span><span>F&B</span></div>
     </section>
@@ -36,7 +46,7 @@ export default function Home() {
     </section>
 
     <section className="products-preview section-grid"><div className="wrap section-pad">
-      <div className="section-head"><div><p className="eyebrow"><span /> DANH MỤC NỔI BẬT</p><h2>Chọn đúng từ<br />nền tảng.</h2></div><Link className="button outline" href="/san-pham">Xem tất cả <ArrowUpRight /></Link></div>
+      <div className="section-head"><div><p className="eyebrow"><span /> DANH MỤC NỔI BẬT</p><h2>Pallet nhựa và sản phẩm<br />cho kho vận.</h2></div><Link className="button outline" href="/san-pham">Xem tất cả <ArrowUpRight /></Link></div>
       <div className="product-grid">{featuredProducts.map((product, i) => <Link className={`product-card card-${i}`} href={`/san-pham/${product.slug}`} key={product.code}><div className="card-visual"><CatalogueImage product={product} /></div><p className="code">{product.code}</p><h3>{product.name}</h3><div className="card-foot"><span>{product.dimension}</span><ArrowUpRight /></div></Link>)}</div>
     </div></section>
 
