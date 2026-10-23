@@ -1,0 +1,18 @@
+{
+  "family": "Be Vietnam Pro",
+  "license": "OFL-1.1",
+  "source": "https://github.com/google/fonts/tree/c13390277dfb1fcc7415d84ef7ef9cfc1e52f8c1/ofl/bevietnampro",
+  "conversion": {
+    "fonttools": "4.67.0",
+    "brotli": "1.2.1",
+    "format": "woff2",
+    "subsetted": false
+  },
+  "files": [
+    { "file": "BeVietnamPro-Regular.woff2", "weight": "400", "sha256": "907ebfa4a4bd967cdcb313b2889655ff9fb90d5fd4f193723aa99142d14a1652" },
+    { "file": "BeVietnamPro-Medium.woff2", "weight": "500", "sha256": "15a399b6a57023c665fa8aca7f4691d36c512b17cc36f74bd9dc077487ac9ffc" },
+    { "file": "BeVietnamPro-SemiBold.woff2", "weight": "600", "sha256": "91329e727900425300269d9402c32e9e020943783fc0b9457f0b7419bef90dbf" },
+    { "file": "BeVietnamPro-Bold.woff2", "weight": "700", "sha256": "32eb3a183490d280351f9676cc0b8e1725d95090988db57503dc83879b5fe602" },
+    { "file": "BeVietnamPro-ExtraBold.woff2", "weight": "800", "sha256": "ea0615e0dfa1139a662630ff6c5a9c202bdaf292f1451f3c556e4a5127e62e6a" }
+  ]
+}
