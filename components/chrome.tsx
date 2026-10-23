@@ -33,7 +33,7 @@ export function Header() {
   return (
     <>
       <header className="site-header">
-        <div className="header-inner wrap">
+        <div className="header-inner wrap" data-nosnippet="">
           <Brand />
           <nav className="desktop-nav">
             {nav.map((item) => (
@@ -66,7 +66,7 @@ export function Header() {
         </div>
       </header>
       {open && (
-        <div className="mobile-menu">
+        <div className="mobile-menu" data-nosnippet="">
           <div className="wrap">
             {nav.map((item) => (
               <Link
@@ -94,7 +94,7 @@ export function Header() {
 
 export function Footer() {
   return (
-    <>
+    <div data-nosnippet="">
       <footer>
         <div className="wrap footer-top">
           <div>
@@ -162,7 +162,7 @@ export function Footer() {
         </div>
       </footer>
       <FloatingContact />
-    </>
+    </div>
   );
 }
 

@@ -5,7 +5,7 @@ import type { Product } from "./products";
 export const siteUrl = "https://www.goldencorepallet.com";
 export const siteName = "Golden Core";
 export const homeTitle = "Pallet nhựa & sóng nhựa công nghiệp";
-export const homeDescription = "Golden Core cung cấp pallet nhựa, sóng nhựa và thùng nhựa cho kho vận, sản xuất. Xem hình ảnh, kích thước, tải trọng và nhận báo giá theo nhu cầu: 0941 495 982.";
+export const homeDescription = "Golden Core cung cấp pallet nhựa, sóng nhựa và thùng nhựa cho kho vận, sản xuất. Xem thông số, hình ảnh và nhận tư vấn, báo giá theo nhu cầu.";
 
 export function absoluteUrl(path: string) {
   return new URL(path, `${siteUrl}/`).href;
