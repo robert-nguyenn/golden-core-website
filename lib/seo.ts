@@ -4,7 +4,7 @@ import type { Product } from "./products";
 
 export const siteUrl = "https://www.goldencorepallet.com";
 export const siteName = "Golden Core";
-export const homeTitle = "Pallet nhựa & sóng nhựa công nghiệp";
+export const homeTitle = "Tổng Kho Pallet Nhựa | Giá Sỉ Tốt - Giao Hàng Toàn Quốc";
 export const homeDescription = "Golden Core cung cấp pallet nhựa, sóng nhựa và thùng nhựa cho kho vận, sản xuất. Xem thông số, hình ảnh và nhận tư vấn, báo giá theo nhu cầu.";
 
 export function absoluteUrl(path: string) {
@@ -18,7 +18,7 @@ export function pageMetadata({ title, description, path, images = [], type = "we
   images?: string[];
   type?: "website" | "article";
 }): Metadata {
-  const fullTitle = `${title} | ${siteName}`;
+  const fullTitle = path === "/" ? title : `${title} | ${siteName}`;
   const imageUrls = images.map(absoluteUrl);
   return {
     title: { absolute: fullTitle },
@@ -65,6 +65,7 @@ export const organizationSchema = {
   "@type": "Organization",
   "@id": `${siteUrl}/#organization`,
   name: siteName,
+  logo: absoluteUrl("/images/nobackground.png"),
   legalName: "Công ty TNHH Golden Core",
   url: siteUrl,
   telephone: "+84941495982",

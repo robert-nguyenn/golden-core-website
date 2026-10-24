@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { ArrowUpRight, Menu, Phone, X } from "./icons";
@@ -15,11 +16,7 @@ const nav = [
 export function Brand() {
   return (
     <Link href="/" className="brand" aria-label="Golden Core - Trang chủ">
-      <span className="brand-mark">
-        <i />
-        <i />
-        <i />
-      </span>
+      <Image className="brand-logo" src="/images/nobackground.png" alt="" width={1254} height={1254} />
       <span>
         GOLDEN <b>CORE</b>
       </span>

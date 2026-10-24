@@ -20,8 +20,12 @@ const primaryFont = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: { default: `${homeTitle} | Golden Core`, template: "%s | Golden Core" },
+  title: { default: homeTitle, template: "%s | Golden Core" },
   description: homeDescription,
+  icons: {
+    icon: { url: "/images/nobackground.png", type: "image/png", sizes: "1254x1254" },
+    apple: "/images/nobackground.png",
+  },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
 };
 
